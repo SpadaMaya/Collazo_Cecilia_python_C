@@ -1,0 +1,61 @@
+{% load bootstrap4 %}
+{% load widget_tweaks %}
+
+<!DOCTYPE html>
+  <head>
+    {% bootstrap_css %}
+    {% bootstrap_javascript %}
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Formulario</title>
+</head>
+<body>
+            <!-- Formulario --> 
+            {% block content %}
+            <form method="post">
+<br>
+<br>
+<form method='post'>
+    {% csrf_token %}
+    <div class='form.group'>
+        <label for='{{ form.nombre.id_for_label }}'>Nombre</label>
+        {{ form.nombre|add_class:'form-control' }}
+    </div>
+    <div class='form.group'>
+        <label for='{{ form.descripcion.id_for_label }}'>Descripción</label>
+        {{ form.descripcion|add_class:'form-control' }}
+    </div>
+    <div class='form.group'>
+        <label for='{{ form.precio.id_for_label }}'>Precio</label>
+        {{ form.precio|add_class:'form-control' }}
+    </div>
+    <div class='form.group'>
+        <label for='{{ form.fecha_registro.id_for_label }}'>Fecha de registro</label>
+        {{ form.fecha_registro|add_class:'form-control' }}
+    </div>
+    <div class='form.group'>
+        <label for='{{ form.estatus.id_for_label }}'>Estatus</label>
+        {{ form.estatus|add_class:'form-control' }}
+    </div>
+    <button class='btn btn-primary' type='submit'>Guardar</button>
+</form>
+
+</div>
+</div>
+{% endblock %} 
+
+<!--<div>
+{% for producto in productos %}
+<p> {{ producto.nombre }} </p>
+{% endfor %}
+</div>
+<div>
+<form method='post'>
+{% csrf_token %}
+{{ form.as_p }}
+<button type='submit'>Guardar</button>
+</form>
+</div> -->
+
+</body>
+</html>

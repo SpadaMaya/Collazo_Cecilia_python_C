@@ -1,0 +1,101 @@
+{% extends 'base.html' %}
+{% block content %}
+{% load bootstrap4 %}
+{% load widget_tweaks %}
+<!DOCTYPE html>
+<head>
+    {% bootstrap4_css %}
+    {% bootstrap4_javascript %}
+    <style>
+        .titulo{
+            background-color: #581845;
+            border-radius: 15px;
+            padding: 5px;
+            font-family: helvetica;
+        }
+        h1{
+            color:white;
+            font-size: xxx-large;
+        }
+    </style>
+</head>
+<body>
+    ---<!--encabezado-->
+    <div class="titulo" align="center">
+        <h1>Libros</h1>
+    </div>
+    <!--contenido-->
+    <div>
+        {% for producto in productos %}
+        <p> {{ producto.titulo }} </p>
+        {% endfor %}
+    </div>
+
+        <div>
+            <form method='post'>
+                {% csrf_token %}
+                {{ form.as_p}}
+                <button type="submit">Guardar</button>
+            </form>
+        </div>
+        
+</body>
+</html>
+
+    ----<!--contenido-->
+   {% block content %}
+    <div align='center'>
+      <div style='width: 80%;'>
+        <table class='table'>
+            <thead>
+            <tr>
+                <th scope='col'>
+                    #
+                </th>
+                <th scope='col'>
+                    Nombre
+                </th>
+                <th scope='col'>
+                    Descripción
+                </th>
+                <th scope='col'>
+                    Precio
+                </th>
+                <th scope='col'>
+                    Fecha de registro
+                </th>
+                <th scope='col'>
+                    Estatus
+                </th>
+            </tr>
+            </thead>
+            <tbody>
+                {% for producto in productos %}
+                <tr>
+                    <td scope='row'>
+                        {{ producto.pk }}
+                    </td>
+                    <td>
+                        {{ producto.nombre }}
+                    </td>
+                    <td>
+                        {{ producto.descripcion }}
+                    </td>
+                    <td>
+                        {{ producto.precio }}
+                    </td>
+                    <td>
+                        {{ producto.fecha_registro }}
+                    </td>
+                    <td>
+                        {{ producto.estatus }}
+                    </td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+        {& endblock %}
+    </body>
+    </html>
+    
+        
